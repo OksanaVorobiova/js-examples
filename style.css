@@ -1,0 +1,28 @@
+.modal {
+    border: 1px solid green;
+    border-radius: 8px;
+    background-color: yellow;
+    min-width: 300px;
+
+    text-align: center;
+
+}
+
+.backdrop {
+    opacity: 0.5;
+    z-index: 500;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+body.show-modal .backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+    background-color: green;
+}
+

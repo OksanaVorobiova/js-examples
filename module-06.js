@@ -1,3 +1,5 @@
+//lesson 11
+
 // task 1
 
 //const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
@@ -76,7 +78,7 @@ bodyEl.prepend(...btnMarkup); */
 
 // task 3
 
-const bodyEl = document.querySelector('body');
+/*const bodyEl = document.querySelector('body');
 
 bodyEl.insertAdjacentHTML('afterbegin', `<main id="main">
 
@@ -115,7 +117,71 @@ bodyEl.insertAdjacentHTML('afterbegin', `<main id="main">
             <p>To find out more about him, feel free to have a look at his biography on <a id="tribute-link"
                     href="https://en.wikipedia.org/wiki/Michel_Legrand" target="_blank">Wikipedia</a>.</p>
         </article>
-    </main>`);
+    </main>`); */
+
+    //lesson 12
+
+    //task 1
+
+const refs = {
+    openModalBtn: document.querySelector('[data-action="open-modal"]'),
+    closeModalBtn: document.querySelector('[data-action="close-modal"]'),
+    backdrop: document.querySelector('.js-backdrop'),
+    bodyEl: document.querySelector('body'),
+    modalEl: document.querySelector('.modal'),
+    submitBtn: document.querySelector('[type="submit"]'),
+    formEl: document.querySelector('.modal-form'),
+}
+
+const { openModalBtn, closeModalBtn, backdrop, bodyEl, modalEl, sumbitBtn, formEl } = refs;
 
 
+openModalBtn.addEventListener('click', onOpenModalBtn);
+closeModalBtn.addEventListener('click', onCloseModalBtn);
+backdrop.addEventListener('click', onBackdropClick);
 
+
+function onOpenModalBtn(e) {
+    bodyEl.classList.add('show-modal');
+
+    window.addEventListener('keydown', onEscKeydown);
+}
+
+function onCloseModalBtn(e) {
+    window.removeEventListener('keydown', onEscKeydown);
+
+    bodyEl.classList.remove('show-modal');
+}
+
+function onBackdropClick(e) {
+    if (e.target === e.currentTarget) {
+        bodyEl.classList.remove('show-modal');
+    }
+}
+
+function onEscKeydown(e) {
+    if (e.key = 'Escape') {
+        onCloseModalBtn();
+    }
+}
+
+
+modalEl.insertAdjacentHTML('afterbegin', `<h2>Modal window</h2>
+<form class="modal-form">
+<label> Password
+<input type="password" name="password" />
+</label>
+<label> Login
+<input type="login" name="login" />
+</label>
+<button type="submit" class="button"> Submit form </button>
+</form> `);
+
+const login ='qwerty123';
+const password = 12345;
+
+formEl.addEventListener('submit', onSubmit);
+
+function onSubmit(e) {
+    e.preventDefault();
+}

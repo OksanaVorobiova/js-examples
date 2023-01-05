@@ -277,26 +277,29 @@ function countSum(array) {
 
 console.log(countSum(arr));*/
 
-const arr = [2, 4, 10, 12, 4, 100, 99, 4, 3, 2, 99, 0];
-
-function findTheBiggest(array) {
-  //array = arr.flat(2);
-
-  let biggest = array[0];
-  let i = 1;
+/*function findMagic(arr) {
+  let i = 0;
   
-  if (i === 11) return biggest;
+  
+  
+  function recursive(arr) {
+    if (i === arr.length) {
+      return -1;
+    } else if (i === arr[i]) {
+      return i;
+    }
 
-  if (biggest < array[i]) {
-    biggest = array[i];
+    i += 1;
   }
-
-  i ++ ;
-
-  findTheBiggest(array);
-
-  
- // return biggest;
+  recursive(arr);
+ // return i;
 }
 
-console.log(findTheBiggest(arr));
+  console.log(findMagic([-20, -10, 2, 10, 20]));*/
+  
+function reverse(n) {
+  // your code here
+  console.log(Array.from(n))
+}
+
+console.log(reverse(1234));
