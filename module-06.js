@@ -196,6 +196,7 @@ function onSubmit(e) {
 
     if (password.value === passwordRight && login.value === loginRight) {
         h2El.textContent = "Вхід успішний";
+        errorEl.textContent = '';
         return;
     }
 
