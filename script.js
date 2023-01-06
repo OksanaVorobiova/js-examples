@@ -297,9 +297,16 @@ console.log(countSum(arr));*/
 
   console.log(findMagic([-20, -10, 2, 10, 20]));*/
   
-function reverse(n) {
-  // your code here
-  console.log(Array.from(n))
+function replicate(times, number, arr = []) {
+	// your solution here
+
+  if (times < 0) return [];
+  
+  arr.length === times  ? arr : arr.push(number);
+  
+  
+
+  return replicate(times, number, arr);
 }
 
-console.log(reverse(1234));
+console.log(replicate(4, 5));

@@ -130,10 +130,10 @@ const refs = {
     bodyEl: document.querySelector('body'),
     modalEl: document.querySelector('.modal'),
     submitBtn: document.querySelector('[type="submit"]'),
-    formEl: document.querySelector('.modal-form'),
+ 
 }
 
-const { openModalBtn, closeModalBtn, backdrop, bodyEl, modalEl, sumbitBtn, formEl } = refs;
+const { openModalBtn, closeModalBtn, backdrop, bodyEl, modalEl, sumbitBtn } = refs;
 
 
 openModalBtn.addEventListener('click', onOpenModalBtn);
@@ -160,13 +160,13 @@ function onBackdropClick(e) {
 }
 
 function onEscKeydown(e) {
-    if (e.key = 'Escape') {
+    if (e.key === 'Escape') {
         onCloseModalBtn();
     }
 }
 
 
-modalEl.insertAdjacentHTML('afterbegin', `<h2>Modal window</h2>
+modalEl.insertAdjacentHTML('afterbegin', `<h2 class="heading">Modal window</h2>
 <form class="modal-form">
 <label> Password
 <input type="password" name="password" />
@@ -175,13 +175,33 @@ modalEl.insertAdjacentHTML('afterbegin', `<h2>Modal window</h2>
 <input type="login" name="login" />
 </label>
 <button type="submit" class="button"> Submit form </button>
-</form> `);
+</form>
+<p class="error-message"></p>`);
 
-const login ='qwerty123';
-const password = 12345;
+const loginRight ="qwerty123";
+const passwordRight = "12345";
+const formEl = document.querySelector('.modal-form');
+const h2El = document.querySelector('.heading');
+const errorEl = document.querySelector('.error-message');
+
 
 formEl.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
     e.preventDefault();
+    console.log(e)
+    const {
+        elements: { password, login } 
+    } = e.currentTarget;
+
+    if (password.value === passwordRight && login.value === loginRight) {
+        h2El.textContent = "Вхід успішний";
+        return;
+    }
+
+    errorEl.textContent = "Логін або пароль не вірні";
+    errorEl.style.color = 'red';
+        return;
+       
 }
+
